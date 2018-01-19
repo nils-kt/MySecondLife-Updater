@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -16,7 +16,7 @@ namespace Updater
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
 
-            Console.Title = "My2Life Updater";
+            Console.Title = "MySecondLife Updater";
             Console.WriteLine("Lade Update herunter ...");
             Console.WriteLine("");
 
@@ -30,15 +30,17 @@ namespace Updater
                 Thread.Sleep(100);
             }
 
-            if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\My2Life - Modpack-Loader.exe"))
+            Console.Clear();
+
+            if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\MySecondLife - Modpack-Loader.exe"))
             {
-                File.Delete(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\My2Life - Modpack-Loader.exe");
+                File.Delete(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\MySecondLife - Modpack-Loader.exe");
             }
 
 
             using (WebClient Client = new WebClient())
             {
-                Client.DownloadFileAsync(new Uri("https://mods.my2.life/update.exe"), Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\My2Life - Modpack-Loader.exe");
+                Client.DownloadFileAsync(new Uri("https://mods.my2.life/update.exe"), Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\MySecondLife - Modpack-Loader.exe");
                 Client.DownloadProgressChanged += OnDownloadProgressChanged;
                 Client.DownloadFileCompleted += OnDownloadFileCompleted;
             }
@@ -53,7 +55,7 @@ namespace Updater
             {
                 File.Delete(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\update.bat");
             }
-            Process.Start(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\My2Life - Modpack-Loader.exe");
+            Process.Start(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\MySecondLife - Modpack-Loader.exe");
             Environment.Exit(0);
         }
 
